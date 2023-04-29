@@ -4,5 +4,8 @@
             "source": "/api/(.*)",
             "destination": "/api"
         }
+    ],
+    "regions": [
+        "arn1"
     ]
 }
