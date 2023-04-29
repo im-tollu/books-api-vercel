@@ -1,13 +1,9 @@
 import express from 'express'
+import { router } from '../routes';
 
 const app = express();
 
-app.get('/api', (req, res) => {
-    const { name = 'World' } = req.query
-    return res.json({
-        message: `Hello ${name}!`,
-    })
-});
+app.use('/api', router)
 
 
 export default app
