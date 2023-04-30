@@ -1,8 +1,11 @@
+import { z } from "zod"
 import { Tenant } from "../tenant"
 
-export interface AddTenantCommand {
-    email: string
-}
+export const addTenantCommandSchema = z.object({
+    email: z.string().email()
+})
+
+export type AddTenantCommand = z.infer<typeof addTenantCommandSchema>
 
 export interface NewTenant {
     email: string
