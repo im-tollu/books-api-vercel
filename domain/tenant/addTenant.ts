@@ -1,5 +1,5 @@
-import { z } from "zod"
-import { Tenant } from "../tenant"
+import { z } from "zod";
+import { Tenant } from "../tenant";
 
 export const addTenantCommandSchema = z.object({
     email: z.string().email()

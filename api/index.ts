@@ -5,6 +5,7 @@ import { StubAddTenantGateway } from '../infra/stub/stubAddTenant';
 import { statusRoutes } from '../routes/statusRoutes';
 import { tenantRoutes } from '../routes/tenantRoutes';
 import { MysqlAddTenantGateway } from "../infra/mysql/mysqlAddTenant";
+import { TenantAlreadyRegistered } from "../errors";
 
 const prisma = new PrismaClient()
 const app = express();
@@ -23,7 +24,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         return
     }
 
-    console.error(err.stack)
+    if (err instanceof TenantAlreadyRegistered) {
+        res.status(409).json(err.message)
+        return
+    }
+
+    console.error(err)
     res.status(500).send('Something broke!')
 })
 
