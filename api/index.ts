@@ -1,9 +1,11 @@
-import express from 'express'
-import { router } from '../routes';
+import express, { Router } from 'express'
+import { statusRoutes } from '../routes/statusRoutes';
 
 const app = express();
 
-app.use('/api', router)
+const appRouter = Router()
+app.use('/api', appRouter)
 
+appRouter.use('/', statusRoutes())
 
 export default app
