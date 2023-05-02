@@ -9,9 +9,9 @@ datasource db {
 }
 
 model Tenant {
-  id        Int      @id @default(autoincrement())
+  tenantId  Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   email     String   @unique
-  apiKey    String   @unique
+  apiToken  String   @unique
 }

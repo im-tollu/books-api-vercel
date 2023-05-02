@@ -2,10 +2,11 @@ import { Tenant } from "../../domain/tenant";
 import { LookupTenantGateway } from "../../domain/tenant/lookupTenant";
 
 class StabLookupTenantGateway implements LookupTenantGateway {
-    lookupTenant = async (apiKey: string): Promise<Tenant> => {
+    lookupTenant = async (apiToken: string): Promise<Tenant> => {
         return {
+            tenantId: 123,
             email: 'joe@doe.org',
-            apiKey: apiKey
+            apiToken
         }
     }
 }

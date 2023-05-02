@@ -14,7 +14,7 @@ export class MysqlAddTenantGateway implements AddTenantGateway {
             const insertedTenant = await this.db.tenant.create({
                 data: {
                     email: newTenant.email,
-                    apiKey: uuidv4()
+                    apiToken: uuidv4()
                 }
             })
             return tenantSchema.parse(insertedTenant)
